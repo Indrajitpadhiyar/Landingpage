@@ -1,62 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+
 @import "tailwindcss";
+
+/* ============================
+   ORIGINAL STYLES (PRESERVED)
+   ============================ */
 
 html,
 body,
 #root {
-    height: 100%;
-    width: 100%;
-
+  width: 100%;
+  background-color: black;
+  overflow-x: hidden;
 }
 
-#root {
-    height: 100%;
-    width: 100%;
-    background-color: black;
+/* Lenis smooth scroll recommended styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Custom Ultra-Thin Premium Glow Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  border: 1px solid #050505;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.4);
 }
 
 .masked {
-    position: relative;
-    background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    background-size: cover;
-
+  position: relative;
+  background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: cover;
 }
 
 .masked::after {
-    content: "macbook pro.";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
-    background-size: cover;
-    -webkit-background-clip: text;
-    background-clip: text;
-    filter: blur(20px);
-    opacity: 0.8;
-    color: transparent;
+  content: "macbook pro.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: blur(20px);
+  opacity: 0.8;
+  color: transparent;
 }
 
 .masked::before {
-    content: "macbook pro.";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
-    background-size: cover;
-    -webkit-background-clip: text;
-    background-clip: text;
-    filter: blur(40px);
-    opacity: 0.8;
-    color: transparent;
+  content: "macbook pro.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://i.pinimg.com/564x/d9/54/87/d95487ffab31b9722b12eaf0e5709494.jpg") no-repeat center center;
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter: blur(40px);
+  opacity: 0.8;
+  color: transparent;
 }
 
-.line{
-    border-bottom: 1px solid rgb(66, 65, 65);
-    padding-bottom:10px ;
+.line {
+  border-bottom: 1px solid rgb(66, 65, 65);
+  padding-bottom: 10px;
+}
+
+/* ==========================================
+   NEW PREMIUM STYLES (ADDITIONAL SECTIONS)
+   ========================================== */
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --font-syne: 'Syne', sans-serif;
+  --bg-dark: #050505;
+  --accent-purple: #a855f7;
+  --accent-blue: #3b82f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Glassmorphism Panel */
+.glass-panel {
+  background: rgba(10, 10, 10, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  border-radius: 16px;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+
+.glass-panel:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 40px 0 rgba(168, 85, 247, 0.1);
+  background: rgba(10, 10, 10, 0.6);
+}
+
+/* Glass border glow gradient mask */
+.glass-border-glow {
+  position: relative;
+}
+
+.glass-border-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02) 40%, rgba(168, 85, 247, 0.1) 60%, rgba(59, 130, 246, 0.2));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0.6;
+  transition: opacity 0.4s ease;
+}
+
+.glass-border-glow:hover::before {
+  opacity: 1;
+}
+
+/* Premium Button */
+.btn-premium {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-premium:hover {
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Heading Styles */
+.heading-futuristic {
+  font-family: var(--font-syne);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  background: linear-gradient(180deg, #ffffff 30%, #a3a3a3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.heading-gradient {
+  background: linear-gradient(135deg, #ffffff 20%, #a855f7 60%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Showcase slides */
+.showcase-slide {
+  flex-shrink: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ==========================================
+   TRANSITION EFFECTS & CYBER GLITCH STYLES
+   ========================================== */
+
+/* 1. Frosted Glass Shard */
+.glass-shard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.05), 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  z-index: 40;
+}
+
+/* 2. Burn Transition Wave */
+.burn-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, #ff3700, #ff6a00, #ffae00, #ff6a00, #ff3700);
+  box-shadow: 0 0 35px 12px rgba(255, 55, 0, 0.9), 0 0 15px 5px rgba(255, 174, 0, 0.7);
+  z-index: 50;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.burn-spark {
+  position: absolute;
+  background: #ffae00;
+  border-radius: 50%;
+  box-shadow: 0 0 8px 2px #ff3700, 0 0 4px 1px #ffae00;
+  pointer-events: none;
+  z-index: 45;
+  will-change: transform, opacity;
+}
+
+/* ==========================================
+   AMBIENT FLOATING ORB BACKGROUND
+   ========================================== */
+
+@keyframes orb-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(8vw, -6vh) scale(1.15); }
+  50% { transform: translate(-4vw, 10vh) scale(0.9); }
+  75% { transform: translate(6vw, 4vh) scale(1.05); }
+}
+
+@keyframes orb-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(-10vw, 8vh) scale(1.1); }
+  50% { transform: translate(6vw, -5vh) scale(0.95); }
+  75% { transform: translate(-3vw, -8vh) scale(1.08); }
+}
+
+@keyframes orb-drift-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(5vw, 12vh) scale(1.2); }
+  50% { transform: translate(-8vw, -4vh) scale(0.85); }
+  75% { transform: translate(10vw, -6vh) scale(1.1); }
+}
+
+.ambient-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  will-change: transform;
+}
+
+.ambient-orb-1 {
+  width: 45vw;
+  height: 45vw;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, #a855f7, transparent 70%);
+  animation: orb-drift-1 25s ease-in-out infinite;
+}
+
+.ambient-orb-2 {
+  width: 35vw;
+  height: 35vw;
+  top: 40%;
+  right: -8%;
+  background: radial-gradient(circle, #3b82f6, transparent 70%);
+  animation: orb-drift-2 30s ease-in-out infinite;
+}
+
+.ambient-orb-3 {
+  width: 40vw;
+  height: 40vw;
+  bottom: -15%;
+  left: 30%;
+  background: radial-gradient(circle, #ec4899, transparent 70%);
+  animation: orb-drift-3 35s ease-in-out infinite;
+}
+
+/* ==========================================
+   APPLE LOGO LOADER
+   ========================================== */
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: opacity, transform;
+}
+
+@keyframes shine-sweep {
+  0% { transform: translateX(-120%) rotate(25deg); }
+  100% { transform: translateX(120%) rotate(25deg); }
+}
+
+/* Cyber-grid background for custom premium mockups */
+.cyber-grid {
+  background-size: 20px 20px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Custom interactive glowing elements */
+.neon-pulse-purple {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+  animation: pulse-purple 2s infinite alternate;
+}
+.neon-pulse-blue {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+  animation: pulse-blue 2s infinite alternate;
+}
+.neon-pulse-pink {
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.4);
+  animation: pulse-pink 2s infinite alternate;
+}
+.neon-pulse-emerald {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+  animation: pulse-emerald 2s infinite alternate;
+}
+
+@keyframes pulse-purple {
+  0% { box-shadow: 0 0 5px rgba(168, 85, 247, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.6); }
+}
+@keyframes pulse-blue {
+  0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.6); }
+}
+@keyframes pulse-pink {
+  0% { box-shadow: 0 0 5px rgba(236, 72, 153, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(236, 72, 153, 0.6); }
+}
+@keyframes pulse-emerald {
+  0% { box-shadow: 0 0 5px rgba(16, 185, 129, 0.2); }
+  100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); }
+}
+
+/* Custom premium scrollbar helper for cards */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ==========================================
+   APPLE STUDIO LIGHT THEME & BENTO GRID
+   ========================================== */
+
+.product-section-light {
+  background-color: #f5f5f7;
+  color: #1d1d1f;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.light-product-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+  border-radius: 24px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              background 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-product-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  transform: translateY(-4px);
+}
+
+.light-tag-purple {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  color: #8b5cf6;
+}
+
+.light-tag-blue {
+  background: rgba(59, 130, 246, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+}
+
+.light-tag-emerald {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  color: #10b981;
+}
+
+.light-btn-buy {
+  background: #0071e3;
+  color: white;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-btn-buy:hover {
+  background: #0077ed;
+  box-shadow: 0 4px 15px rgba(0, 113, 227, 0.35);
+  transform: scale(1.02);
+}
+
+.light-btn-secondary {
+  border: 1px solid rgba(0, 113, 227, 0.3);
+  color: #0071e3;
+  border-radius: 9999px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.light-btn-secondary:hover {
+  background: rgba(0, 113, 227, 0.04);
+  border-color: #0071e3;
 }
